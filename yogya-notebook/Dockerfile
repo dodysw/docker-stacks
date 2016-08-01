@@ -23,7 +23,8 @@ RUN conda config --set ssl_verify False && \
     conda install --quiet --yes \
      'addict=1.0*' \
      'lxml=3.6*' \
-     'oracle-instantclient=11.2*'
+     'oracle-instantclient=11.2*' \
+    && conda clean -tipsy
 
 # cx_Oracle needs libraries from oracle
 ENV ORACLE_HOME=$CONDA_DIR/orahome
@@ -38,3 +39,5 @@ RUN pip --no-cache-dir install \
      'dicttoxml==1.7.4' \
      'grequests==0.3.0' \
      'zeep==0.13.0'
+
+USER $NB_USER
